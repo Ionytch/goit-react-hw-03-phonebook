@@ -38,12 +38,32 @@ class App extends Component {
     );
   };
 
-    deleteContact =contactId => {
+  deleteContact = contactId => {
     this.setState(prevState => ({
-      contacts:prevState.contacts.filter(contact=>contact.id!==contactId),
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     })
-      )
-  }
+    )
+  };
+
+  componentDidMount() {
+    console.log('did mount');
+    const contacts1 = localStorage.getItem('contacts');
+    const parsedContatcts = JSON.parse(contacts1);
+    console.log(parsedContatcts);
+    if (parsedContatcts) {
+      this.setState({ contacts: parsedContatcts });
+    }
+    
+}
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Did update');
+
+    if (this.state.contacts !== prevState.contacts) {
+      console.log('Smth have happened')
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+}
 
   render() {
     const { filter } = this.state;
@@ -66,7 +86,7 @@ class App extends Component {
         {this.state.contacts.length > 0 ? (
           <Contacts
             names={filtredContacts}
-            onDeleteContact={this.deleteContact}
+            onDeleteContacts={this.deleteContact}
           />
         ) : (
           <span text="Contact list is empty."></span>
