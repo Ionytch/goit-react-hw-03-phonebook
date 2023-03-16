@@ -1,4 +1,5 @@
  import { Component } from "react";
+import { PhonebookStyle } from "./Phonebook.styled";
 
 class Phonebook extends Component {
     
@@ -27,7 +28,7 @@ class Phonebook extends Component {
 
     render() {
 
-        return (<div>
+        return (<PhonebookStyle>
             <h2>PHONEBOOK</h2>
             <form onSubmit={this.handleSubmit}>
                 <label for="name">
@@ -57,7 +58,7 @@ class Phonebook extends Component {
                 <button type="submit">ADD CONTACT</button>
 
             </form>
-        </div>
+        </PhonebookStyle>
        
         )
     }

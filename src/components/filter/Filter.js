@@ -1,5 +1,7 @@
+import { FilterStyle } from "./Filter.styled"
+
 export const Filter = ({filter, onFilter}) => {
-    return (<div>
+    return (<FilterStyle>
         <h2>filter</h2>
         <form>
             <label for="filter">
@@ -13,7 +15,7 @@ export const Filter = ({filter, onFilter}) => {
                 
             ></input>
                 </form>  
-        </div>
+        </FilterStyle>
        
     )
 }

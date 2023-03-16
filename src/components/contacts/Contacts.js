@@ -1,8 +1,10 @@
 // import { Component } from "react";
 
+import { ContactsList } from "./Contatcts.styled"
+
  function Contacts ({names, onDeleteContacts}) {
            return (
-            <ul>
+            <ContactsList>
                    {
                        names.map(name => (
                            <li key={name.id}>
@@ -10,7 +12,7 @@
                                
                 <button onClick={()=>onDeleteContacts(name.id)}>DELETE</button>
                 </li>))}
-            </ul>
+            </ContactsList>
         )
     
 }
